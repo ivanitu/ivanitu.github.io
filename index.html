@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <script src='https://unpkg.com/d3@7.8.1/dist/d3.min.js'></script>
+  <title>Engineering Economics Calculator</title>
+
+  <link rel = 'stylesheet' href = 'styles.css'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class = "header">
+    <div class = "title">
+      Engineering Economics Equivalence Demo
+      <div class = "sub-title">
+        by Ivan Iturriaga
+      </div>
+    </div>
+    <div class = "logo-container">
+      <img class = "logo" src="images/Equivalence-Logo-Simple.svg" alt="Dollar Sign Logo"/>
+      <div class = "second-hand-container">
+        <img class = "second-hand" src="images/Second-Hand.svg" 
+        alt="Second Hand Extra for Logo"/>
+      </div>
+    </div>
+  </div>
+
+  <form class = 'form' id = 'form' action = '#' method = 'post'>      
+    <div class = 'input-both'>
+      <label for = 'P' class = 'input-labels'>Principal Amount</label>
+      <input class='input-box' type='number' name='P'id='P' 
+      placeholder = 'ex: 10000' step = '1000'
+      onkeypress='return (event.charCode != 45)'>
+    </div>
+    <div class = 'input-both'>
+      <label for = 'n' class = 'input-labels'>Time Periods</label>
+      <input class = 'input-box' type = 'number' name = 'n' id = 'n' 
+        placeholder = 'ex: 5' min = '1'
+        onkeypress='return (event.charCode != 45)'>
+    </div>
+    <div class = 'input-both'>
+      <label for = 'i' class = 'input-labels'>Interest Rate</label>
+      <input class = 'input-box' type = 'number' name = 'i' id = 'i' 
+        placeholder = 'ex: 0.10' min = '0' 
+        max = '1' step = '0.01'
+        onkeypress='return (event.charCode != 45)'>
+    </div>    
+  </form>
+  <section class = 'graph-grid'>
+    <div class = 'graph'>
+      <h1>Present Value</h1>
+      <svg id = "PtoP"></svg>
+    </div>
+
+    <div class = 'graph'>
+      <h1>Future Value</h1>
+      <svg id = "PtoF"></svg>
+      <p><strong>Excel Formula,</strong> =FV(rate, nper, pmt, [pv], [type])</p>
+    </div>
+
+    <div class = 'graph'>
+      <h1>Uniform</h1> 
+      <svg id = "PtoA"></svg>
+      <p><strong>Excel Formula,</strong> =PMT(rate, nper, pv, [fv], [type])</p>
+    </div>
+    
+    <div class = 'graph'>
+      <h1>Linear Gradient</h1>
+      <svg id = "PtoG"></svg>
+    </div>
+
+  </section>
+  <section class = 'explanation'>
+    <p class = 'quote'>
+      “It is well enough that people of the nation do not understand our banking and monetary system, for if they did, I believe there would be a revolution before tomorrow morning.” - Henry Ford
+    </p>
+    <p>
+      There is a Time Value of money. It is preferable to receive $100 today rather than $100 a year from now. This is because you can invest the $100 today and have it be worth more in a year. But, which would you pick if I gave you $110 after a year? Or, what if I gave you $150 after 10 years? The answer is that it depends on how much you believe that you can earn during that time. 
+    <p>    
+      Therefore, we are left with three levers for comparing any set of unique alternatives:
+    </p> 
+    <ul>
+      <li>size of original investment (Principal Amount)</li>
+      <li>rate of growth (Interest Rate)</li>
+      <li>length of time (# of Time Periods)</li>
+    </ul>
+    </p>
+    <p><strong>
+      Based on those three levers, we can also evaluate at what point do cash flows have the same economic value?
+    </strong></p>
+    <p>
+      Within the study of Engineering Economics, there is a principle called Economic Equivalence. Cash flows are economically equivalent when they have the same economic value and can therefore be traded for each other (like the graphs seen above). Formulas and factors have been created to move between different standard types of cash flows (single, uniform series, linear gradient series and geometric gradient series).
+    </p>
+    <p>
+      The graphs seen above are all economically equivalent, meaning that they all have the same economic value. I built this tool to show the standard forms of some classic cash flow diagrams and allow people to gain an intuition about how the time value of money affects cash flows over time.
+    </p>   
+    </p>
+  </section>
+  <script src= 'graphs.js'></script>
+  
+</body>
+</html>
